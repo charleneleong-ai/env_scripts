@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+function awslogin() {
+    saml2aws login --force && eval $(saml2aws script) 
+    export AWS_DEFAULT_REGION='ap-southeast-2'
+    export AWS_PROFILE=$(aws iam list-account-aliases --query AccountAliases --output text)
+    env | grep AWS  
+}
+
+function awsadmin() {
+    saml2aws login --force --idp-account=admin && eval $(saml2aws script --idp-account=admin)
+    export AWS_DEFAULT_REGION='ap-southeast-2'
+    export AWS_PROFILE=$(aws iam list-account-aliases --query AccountAliases --output text)
+    env | grep AWS  
+}

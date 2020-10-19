@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+# Auto activate Python Virtualenv
+function cd() {
+  builtin cd "$@"
+  ls
+  if [[ -z "$VIRTUAL_ENV" ]] ; then
+      if [[ -d ./.venv ]] ; then
+        source ./.venv/bin/activate
+      fi
+  else
+      parentdir="$(dirname "$VIRTUAL_ENV")"
+      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
+        deactivate
+      fi
+  fi
+}
