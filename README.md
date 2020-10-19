@@ -6,7 +6,10 @@ Here are some helper scripts to make working with Python virtual environments, C
 Please feel free to adapt and improve! 
 
 ### Requirements
-The following instructions assume you are on MacOS, else please refer to the appropriate package for your OS.
+The following instructions assume you are using ZSH Shell on MacOS. If not, please refer to the appropriate package download for your specific OS!
+
+Please install Brew and the required [platform dev tools](https://github.com/Faethm-ai/platform-dev-tools/tree/master/mac).
+
 
 - [ZSH Shell](https://ohmyz.sh/#install)
   - ```
@@ -22,10 +25,24 @@ The following instructions assume you are on MacOS, else please refer to the app
     brew install saml2aws
     saml2aws --version
     ```
-- [Miniconda](https://repo.anaconda.com/archive/) or [Conda](https://docs.anaconda.com/anaconda/install/mac-os/) 
+- [Python 3.x](https://docs.python-guide.org/starting/install3/osx/)
+  - ```bash
+    brew install python
+    ```
+- [Miniconda](https://repo.anaconda.com/archive/) or [Conda](https://docs.anaconda.com/anaconda/install/mac-os/) is not included in [platform dev tools](https://github.com/Faethm-ai/platform-dev-tools/tree/master/mac) above.
   - ```bash
     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     chmod a+x Miniconda3-latest-Linux-x86_64.sh
     ./Miniconda3-latest-Linux-x86_64.sh -b -p ~/miniconda
     ```
 
+
+Source these scripts in your `~/.zshrc`
+
+```bash
+...
+source ~/env_scripts/conda_auto_env
+source ~/env_scripts/auto_venv
+source ~/env_scripts/saml2aws
+...
+```
